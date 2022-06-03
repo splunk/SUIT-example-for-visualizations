@@ -6,7 +6,6 @@ import VisualizationCard from '@splunk/visualization-card';
 import { SplunkThemeProvider } from '@splunk/themes';
 import { defaultTheme, getThemeOptions } from '@splunk/splunk-utils/themes';
 
-
 import { StyledContainer, StyledGreeting } from './StartStyles';
 
 const themeProviderSettings = getThemeOptions(defaultTheme() || 'enterprise');
@@ -21,7 +20,7 @@ layout(
                 available to Splunk developers on how they want to visualize data outside of Splunk
                 Dashboard Studio or Simple XML Dashboards. The following cards direct to examples of
                 three possible ways a developer can directly code visualizations in their Splunk
-                app.
+                app. Visit each page to learn more about that method&apos;s implementation and the
             </div>
             <div
                 style={{
@@ -30,30 +29,42 @@ layout(
                     marginTop: '25px',
                 }}
             >
-                <div>
+                <a
+                    style={{ textDecoration: 'none' }}
+                    href="/app/sui-visualizations-example/dashboards"
+                    target="_blank"
+                >
                     <VisualizationCard
-                        src={"/static/app/sui-visualizations-example/sankey.png"}
+                        src="/static/app/sui-visualizations-example/sankey.png"
                         title="Splunk Visualization (Sankey Diagram)"
                         subtitle="Without Dashboard Framework (ReactJS Only)"
                         alt="Sankey Diagram Image"
                     />
-                </div>
-                <div>
+                </a>
+                <a
+                    style={{ textDecoration: 'none' }}
+                    href="/app/sui-visualizations-example/dashboards"
+                    target="_blank"
+                >
                     <VisualizationCard
-                        src={"/static/app/sui-visualizations-example/radar.png"}
+                        src="/static/app/sui-visualizations-example/radar.png"
                         title="3rd Party Visualization (Radar Chart)"
                         subtitle="Within Splunk Dashboard Framework"
                         alt="Radar Chart Image"
                     />
-                </div>
-                <div>
+                </a>
+                <a
+                    style={{ textDecoration: 'none' }}
+                    href="/app/sui-visualizations-example/dashboards"
+                    target="_blank"
+                >
                     <VisualizationCard
-                        src={"/static/app/sui-visualizations-example/treemap.png"}
+                        src="/static/app/sui-visualizations-example/treemap.png"
                         title="3rd Party Visualization (Treemap Diagram)"
                         subtitle="Without Dashboard Framework (ReactJS Only)"
                         alt="Treemap Diagram Image"
                     />
-                </div>
+                </a>
             </div>
         </StyledContainer>
     </SplunkThemeProvider>

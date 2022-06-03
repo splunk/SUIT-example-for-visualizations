@@ -1,4 +1,4 @@
 <?xml version="1.0"?>
 <view template="sui-visualizations-example:/templates/start.html" type="html">
-	<label>Home</label>
+	<label>3rd Party Without Dashboard Framework</label>
 </view>
