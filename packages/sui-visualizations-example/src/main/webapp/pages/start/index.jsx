@@ -6,9 +6,6 @@ import VisualizationCard from '@splunk/visualization-card';
 import { SplunkThemeProvider } from '@splunk/themes';
 import { defaultTheme, getThemeOptions } from '@splunk/splunk-utils/themes';
 
-import Sankey from './Images/sankey.png';
-import Radar from './Images/radar.png';
-import Treemap from './Images/treemap.png';
 
 import { StyledContainer, StyledGreeting } from './StartStyles';
 
@@ -35,7 +32,7 @@ layout(
             >
                 <div>
                     <VisualizationCard
-                        src={Sankey}
+                        src={"/static/app/sui-visualizations-example/sankey.png"}
                         title="Splunk Visualization (Sankey Diagram)"
                         subtitle="Without Dashboard Framework (ReactJS Only)"
                         alt="Sankey Diagram Image"
@@ -43,7 +40,7 @@ layout(
                 </div>
                 <div>
                     <VisualizationCard
-                        src={Radar}
+                        src={"/static/app/sui-visualizations-example/radar.png"}
                         title="3rd Party Visualization (Radar Chart)"
                         subtitle="Within Splunk Dashboard Framework"
                         alt="Radar Chart Image"
@@ -51,7 +48,7 @@ layout(
                 </div>
                 <div>
                     <VisualizationCard
-                        src={Treemap}
+                        src={"/static/app/sui-visualizations-example/treemap.png"}
                         title="3rd Party Visualization (Treemap Diagram)"
                         subtitle="Without Dashboard Framework (ReactJS Only)"
                         alt="Treemap Diagram Image"
