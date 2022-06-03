@@ -29,42 +29,33 @@ layout(
                     marginTop: '25px',
                 }}
             >
-                <a
-                    style={{ textDecoration: 'none' }}
-                    href="/app/sui-visualizations-example/dashboards"
-                    target="_blank"
-                >
+                <div>
                     <VisualizationCard
                         src="/static/app/sui-visualizations-example/sankey.png"
                         title="Splunk Visualization (Sankey Diagram)"
                         subtitle="Without Dashboard Framework (ReactJS Only)"
                         alt="Sankey Diagram Image"
+                        url="/app/sui-visualizations-example/dashboards"
                     />
-                </a>
-                <a
-                    style={{ textDecoration: 'none' }}
-                    href="/app/sui-visualizations-example/dashboards"
-                    target="_blank"
-                >
+                </div>
+                <div>
                     <VisualizationCard
                         src="/static/app/sui-visualizations-example/radar.png"
                         title="3rd Party Visualization (Radar Chart)"
                         subtitle="Within Splunk Dashboard Framework"
                         alt="Radar Chart Image"
+                        url="/app/sui-visualizations-example/dashboards"
                     />
-                </a>
-                <a
-                    style={{ textDecoration: 'none' }}
-                    href="/app/sui-visualizations-example/dashboards"
-                    target="_blank"
-                >
+                </div>
+                <div>
                     <VisualizationCard
                         src="/static/app/sui-visualizations-example/treemap.png"
                         title="3rd Party Visualization (Treemap Diagram)"
                         subtitle="Without Dashboard Framework (ReactJS Only)"
                         alt="Treemap Diagram Image"
+                        url="/app/sui-visualizations-example/dashboards"
                     />
-                </a>
+                </div>
             </div>
         </StyledContainer>
     </SplunkThemeProvider>
