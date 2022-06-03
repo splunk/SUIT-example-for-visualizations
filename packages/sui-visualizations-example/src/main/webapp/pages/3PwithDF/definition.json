@@ -1,0 +1,117 @@
+{
+  "visualizations": {
+    "viz_pfqlLWWn": {
+      "type": "splunk.CustomRadar",
+      "dataSources": {
+        "primary": "s2m2_search"
+      }
+    },
+    "viz_Scxyw2SQ": {
+      "type": "splunk.table",
+      "options": {},
+      "dataSources": {
+        "primary": "s2m2_search"
+      }
+    },
+    "viz_Zr9ZfXaM": {
+      "type": "splunk.table",
+      "dataSources": {
+        "primary": "ds_test"
+      }
+    }
+  },
+  "dataSources": {
+    "ds_test": {
+      "type": "ds.test",
+      "options": {
+        "data": {
+          "fields": [
+            {
+              "name": "Language"
+            },
+            {
+              "name": "People"
+            },
+            {
+              "name": "Process"
+            },
+            {
+              "name": "Data"
+            }
+          ],
+          "columns": [
+            ["golang", "JS", "CSS", "python"],
+            [10, 20, 30, 40],
+            [16, 10, 32, 47],
+            [18, 9, 24, 39]
+          ]
+        }
+      }
+    },
+    "s2m2_search": {
+      "type": "ds.search",
+      "options": {
+        "query": "`s2m2Index` section=\"Summary_People\" OR section=\"Summary_Process\" OR section=\"Summary_Data\"\n| eval MIL1=25.0\n| eval MIL2=44.9\n| eval MIL3=64.9\n| eval MIL4=90.0\n| table question, questionScore, MIL*\n|  rename questionScore AS Current",
+        "queryParameters": {
+          "earliest": "0",
+          "latest": ""
+        }
+      },
+      "name": "s2m2_search"
+    }
+  },
+  "defaults": {
+    "dataSources": {
+      "ds.search": {
+        "options": {
+          "queryParameters": {
+            "latest": "$global_time.latest$",
+            "earliest": "$global_time.earliest$"
+          }
+        }
+      }
+    }
+  },
+  "inputs": {},
+  "layout": {
+    "type": "absolute",
+    "options": {
+      "height": 2000
+    },
+    "structure": [
+      {
+        "item": "viz_pfqlLWWn",
+        "type": "block",
+        "position": {
+          "x": 10,
+          "y": 10,
+          "w": 560,
+          "h": 670
+        }
+      },
+      {
+        "item": "viz_Scxyw2SQ",
+        "type": "block",
+        "position": {
+          "x": 10,
+          "y": 710,
+          "w": 590,
+          "h": 330
+        }
+      },
+      {
+        "item": "viz_Zr9ZfXaM",
+        "type": "block",
+        "position": {
+          "x": 10,
+          "y": 1060,
+          "w": 590,
+          "h": 330
+        }
+      }
+    ],
+    "globalInputs": []
+  },
+  "description": "",
+  "title": "Radar"
+}

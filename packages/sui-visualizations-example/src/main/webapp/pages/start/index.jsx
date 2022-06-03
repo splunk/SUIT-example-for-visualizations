@@ -4,14 +4,14 @@ import layout from '@splunk/react-page';
 // import RadarChart from '@splunk/radar-chart';
 import VisualizationCard from '@splunk/visualization-card';
 import { SplunkThemeProvider } from '@splunk/themes';
-import { defaultTheme, getThemeOptions } from '@splunk/splunk-utils/themes';
 
 import { StyledContainer, StyledGreeting } from './StartStyles';
 
-const themeProviderSettings = getThemeOptions(defaultTheme() || 'enterprise');
-
+const themeToVariant = {
+    enterprise: { colorScheme: 'light', family: 'enterprise' },
+};
 layout(
-    <SplunkThemeProvider {...themeProviderSettings}>
+    <SplunkThemeProvider {...themeToVariant.enterprise}>
         <StyledContainer>
             <StyledGreeting>Visualizations with Splunk UI Toolkit</StyledGreeting>
             <div>
@@ -44,7 +44,7 @@ layout(
                         title="3rd Party Visualization (Radar Chart)"
                         subtitle="Within Splunk Dashboard Framework"
                         alt="Radar Chart Image"
-                        url="/app/sui-visualizations-example/dashboards"
+                        url="/app/sui-visualizations-example/3PwithDF"
                     />
                 </div>
                 <div>
