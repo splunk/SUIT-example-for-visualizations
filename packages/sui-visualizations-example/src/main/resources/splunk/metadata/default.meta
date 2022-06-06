@@ -1,0 +1,18 @@
+# Application-level permissions
+[]
+access = read : [ * ], write : [ admin, power ]
+export = none
+
+
+
+### VIEWS
+
+[views/dashboard]
+export = system
+
+### LOOKUPS
+
+[lookups]
+export = system
+access = read : [ * ], write : [ admin ]
+

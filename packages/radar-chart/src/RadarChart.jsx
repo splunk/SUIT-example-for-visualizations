@@ -31,24 +31,24 @@ const formatData = (dataSources) => {
 
 const CustomRadar = ({ dataSources }) => {
     const radarData = formatData(dataSources); // format the dataSource from the definition into the proper expected form
-    console.log(radarData);
+    // console.log(radarData);
     return (
         <>
             <Radar
                 width={600}
                 height={700}
-                keys={['MIL1', 'MIL2', 'MIL3', 'MIL4', 'Current']}
+                keys={['January', 'February']}
                 data={radarData}
-                indexBy="question"
+                indexBy="Item"
                 valueFormat=">-.2f"
                 margin={{ top: 70, right: 80, bottom: 40, left: 80 }}
                 curve="cardinalClosed"
                 borderColor={{ from: 'color' }}
                 gridLabelOffset={36}
                 dotSize={10}
-                dotColor={'transparent'}
+                dotColor="transparent"
                 dotBorderWidth={0}
-                colors={{ scheme: 'paired' }}
+                colors={{ scheme: 'category10' }}
                 motionConfig="slow"
                 legends={[
                     {

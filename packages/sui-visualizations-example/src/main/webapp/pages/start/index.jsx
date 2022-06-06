@@ -35,7 +35,7 @@ layout(
                         title="Splunk Visualization (Sankey Diagram)"
                         subtitle="Without Dashboard Framework (ReactJS Only)"
                         alt="Sankey Diagram Image"
-                        url="/app/sui-visualizations-example/dashboards"
+                        url="/app/sui-visualizations-example/splunkViz"
                     />
                 </div>
                 <div>

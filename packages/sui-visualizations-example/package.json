@@ -17,7 +17,8 @@
     "@splunk/dashboard-context": "^24.5.0",
     "@splunk/dashboard-core": "^24.5.0",
     "@splunk/dashboard-presets": "^24.5.0",
-    "@splunk/visualization-context": "^24.5.0"
+    "@splunk/visualization-context": "^24.5.0",
+    "@splunk/visualizations": "^24.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.2.0",
