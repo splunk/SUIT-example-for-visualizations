@@ -17,6 +17,7 @@
     "@splunk/dashboard-context": "^24.5.0",
     "@splunk/dashboard-core": "^24.5.0",
     "@splunk/dashboard-presets": "^24.5.0",
+    "@splunk/search-job": "^2.0.0",
     "@splunk/visualization-context": "^24.5.0",
     "@splunk/visualizations": "^24.5.0"
   },
