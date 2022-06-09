@@ -11,6 +11,10 @@ const mySearchJob = SearchJob.create({
     latest_time: 'now',
 });
 
+const params = {
+    output_mode: 'json_cols',
+};
+
 const themeToVariant = {
     enterprise: { colorScheme: 'light', family: 'enterprise' },
 };
@@ -20,27 +24,9 @@ const SplunkVizExample = () => {
     const [dataColumns, setDataColumns] = useState();
 
     useEffect(() => {
-        const subscription = mySearchJob.getResults().subscribe((results) => {
-            const data = results.results;
-            const fields = Object.keys(data[0]); // grab the field names from the returned data
-            const columns = [];
-
-            // map returned data array into an array of just the column information
-
-            fields.forEach((field) => {
-                const arr = [];
-                data.forEach((obj) => {
-                    arr.push(obj[field]);
-                });
-
-                // once all have been added to arr
-                columns.push(arr);
-            });
-
-            // update state variables
-
-            setDataFields(fields);
-            setDataColumns(columns);
+        const subscription = mySearchJob.getResults(params).subscribe((results) => {
+            setDataFields(results.fields); // update state variables
+            setDataColumns(results.columns);
         });
         // clean up func
         return () => {
@@ -60,7 +46,7 @@ const SplunkVizExample = () => {
                 <Markdown
                     options={{
                         markdown:
-                            '## Splunk Sankey \nIn this page we use the Sankey Diagram from the `@splunk/visualizations` package. ',
+                            '## Splunk Sankey \nIn this page we use the [Sankey](https://splunkui.splunk.com/Packages/visualizations/?path=%2FSankey) diagram from the `@splunk/visualizations` package. We also use the [Markdown](https://splunkui.splunk.com/Packages/visualizations/?path=%2FMarkdown) visualization for the text you are reading now, as well as the [Table](https://splunkui.splunk.com/Packages/visualizations/?path=%2FTable) visualization to show the raw output of the Splunk search we are using.',
                     }}
                 />
                 <div
@@ -93,6 +79,12 @@ const SplunkVizExample = () => {
                                 columns: dataColumns,
                             },
                         },
+                    }}
+                />
+                <Markdown
+                    options={{
+                        markdown:
+                            '# Splunk Searches \nThe benefit of using a Splunk visulization within Splunk Web is that you can run a Splunk search directly in your app, without worrying about authentication or CORS configuration. This can be done with the `@splunk/search-job` package from the [Splunk UI Toolkit](https://splunkui.splunk.com/Packages/search-job/Overview). Simply put, this package provides you the `SearchJob` class that allows you to subscribe to search results and use them within your app. Once the results are received, you can manipulate the data to work with the Splunk visualization. Consult the [API documentation](https://splunkui.splunk.com/Packages/visualizations/?path=%2FOverview) for the Splunk visualization you are using to know what format it expects for data.  ',
                     }}
                 />
             </SplunkThemeProvider>
