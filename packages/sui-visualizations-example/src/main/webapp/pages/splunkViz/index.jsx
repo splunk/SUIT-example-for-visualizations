@@ -4,6 +4,6 @@ import SplunkVizExample from './SplunkViz';
 
 layout(<SplunkVizExample />, {
     pageTitle: 'Splunk Visualizations',
-    hideFooter: true,
-    layout: 'fixed',
+    hideFooter: false,
+    layout: 'scrolling',
 });
