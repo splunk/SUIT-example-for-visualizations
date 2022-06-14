@@ -3,7 +3,7 @@ import layout from '@splunk/react-page';
 import RadarDashboard from './RadarDashboard';
 
 layout(<RadarDashboard />, {
-    pageTitle: 'Radar Dashboard',
+    pageTitle: 'Third Party Viz in Dashboard',
     hideFooter: true,
     layout: 'fixed',
 });
