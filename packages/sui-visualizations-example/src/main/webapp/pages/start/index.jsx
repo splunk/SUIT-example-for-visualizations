@@ -53,7 +53,7 @@ layout(
                         title="3rd Party Visualization (Treemap Diagram)"
                         subtitle="Without Dashboard Framework (ReactJS Only)"
                         alt="Treemap Diagram Image"
-                        url="/app/sui-visualizations-example/dashboards"
+                        url="/app/sui-visualizations-example/3PwithoutDF"
                     />
                 </div>
             </div>
