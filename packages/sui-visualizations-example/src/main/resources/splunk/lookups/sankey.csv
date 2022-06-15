@@ -1,0 +1,9 @@
+source,target,value,value2
+Oil,Fossil Fuels,15,1
+Natural Gas,Fossil Fuels,20,20
+Coal,Fossil Fuels,25,3
+Coal,Electricity,25,4
+Fossil Fuels,Energy,60,50
+Electricity,Energy,25,6
+Electricity,Electricity,5,7
+Energy,Oil,2,8
