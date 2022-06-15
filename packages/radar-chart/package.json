@@ -20,6 +20,8 @@
   },
   "main": "RadarChart.js",
   "dependencies": {
+    "@nivo/core": "^0.79.0",
+    "@nivo/radar": "^0.79.1",
     "@splunk/react-ui": "^4.2.0",
     "@splunk/themes": "^0.8.0"
   },

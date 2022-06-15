@@ -1,0 +1,236 @@
+{
+  "visualizations": {
+    "viz_pfqlLWWn": {
+      "type": "splunk.CustomRadar",
+      "dataSources": {
+        "primary": "radar_search"
+      }
+    },
+    "viz_Scxyw2SQ": {
+      "type": "splunk.table",
+      "options": {},
+      "dataSources": {
+        "primary": "radar_search"
+      }
+    },
+    "viz_OUKSyzmT": {
+      "type": "splunk.singlevalue",
+      "options": {},
+      "dataSources": {
+        "primary": "ds_aruqtBVC"
+      }
+    },
+    "viz_7SAXsMlq": {
+      "type": "splunk.column",
+      "options": {},
+      "context": {},
+      "showProgressBar": false,
+      "showLastUpdated": false,
+      "dataSources": {
+        "primary": "ds_InXYWTrA"
+      }
+    },
+    "viz_h9C35sBw": {
+      "type": "splunk.fillergauge",
+      "options": {
+        "gaugeColor": "#ec9960"
+      },
+      "showProgressBar": false,
+      "showLastUpdated": false,
+      "dataSources": {
+        "primary": "ds_Bs6zt3CH"
+      }
+    },
+    "viz_D5V3kMVN": {
+      "type": "splunk.markdown",
+      "options": {
+        "markdown": "# Using a 3rd party Visualization in Splunk Dashboard Framework\n\nThe Splunk Dashboard framework comes with many beautiful visualizations as part of the `@splunk/visualizations` library. However, there may be the scenario where you would need to use a third-party visualization, depending on your needs. The Splunk Dashboard Framework is extensible and flexible enough to let you import a visualization into the dashboard from a third-party. You can do this by treating the third-party visualization like a Splunk Visualization using the `SplunkVisualization` module of the `@splunk/visualizations` package. This new visualization can then be part of a custom preset and be used in the dashboard definition like any other visualization. This is exactly what we did for the radar chart you see on this dashboard, from a library called `nivo`. For a deep dive, check out the Dashboard Framework Documentation as well as the source code for this dashboard. \n\n```\nimport { Radar } from '@nivo/radar';\nimport SplunkVisualization from '@splunk/visualizations/common/SplunkVisualization';\n\n\nconst formatData = (dataSources) => {\n  // data formatting\n}\nconst CustomRadar = ({ dataSources }) => {\n    const radarData = formatData(dataSources); // format the dataSource from the definition into the proper expected form\n    return (\n        <>\n            <Radar\n              // props\n            />\n        </>\n    );\n};\n\nCustomRadar.config = {\n    dataContract: {},\n    optionsSchema: {},\n    key: 'splunk.CustomRadar',\n    name: 'CustomRadar',\n};\n\nCustomRadar.propTypes = {\n    ...SplunkVisualization.propTypes,\n};\n\nCustomRadar.defaultProps = {\n    ...SplunkVisualization.defaultProps,\n};\n\nexport default CustomRadar;\n\n```"
+      }
+    }
+  },
+  "dataSources": {
+    "ds_test": {
+      "type": "ds.test",
+      "options": {
+        "data": {
+          "fields": [
+            {
+              "name": "Language"
+            },
+            {
+              "name": "People"
+            },
+            {
+              "name": "Process"
+            },
+            {
+              "name": "Data"
+            }
+          ],
+          "columns": [
+            ["golang", "JS", "CSS", "python"],
+            [10, 20, 30, 40],
+            [16, 10, 32, 47],
+            [18, 9, 24, 39]
+          ]
+        }
+      }
+    },
+    "radar_search": {
+      "type": "ds.search",
+      "options": {
+        "query": "| inputlookup radar.csv\n| table Item, January February",
+        "queryParameters": {
+          "earliest": "0",
+          "latest": ""
+        }
+      },
+      "name": "radar_search"
+    },
+    "ds_aruqtBVC": {
+      "type": "ds.search",
+      "options": {
+        "query": "index=_internal\n| timechart count ",
+        "queryParameters": {
+          "earliest": "-15m",
+          "latest": "now"
+        }
+      },
+      "name": "Search_1"
+    },
+    "ds_InXYWTrA": {
+      "type": "ds.search",
+      "options": {
+        "query": "index=_internal\n| stats count by method",
+        "queryParameters": {
+          "earliest": "-15m",
+          "latest": "now"
+        }
+      },
+      "name": "Search_2"
+    },
+    "ds_Bs6zt3CH": {
+      "type": "ds.search",
+      "options": {
+        "query": "| makeresults \n| eval count=76",
+        "queryParameters": {
+          "earliest": "-15m",
+          "latest": "now"
+        }
+      },
+      "name": "Search_3"
+    },
+    "ds_rmsYDthI_ds_test": {
+      "type": "ds.test",
+      "options": {
+        "data": {
+          "fields": [
+            {
+              "name": "Language"
+            },
+            {
+              "name": "People"
+            },
+            {
+              "name": "Process"
+            },
+            {
+              "name": "Data"
+            }
+          ],
+          "columns": [
+            ["golang", "JS", "CSS", "python"],
+            [10, 20, 30, 40],
+            [16, 10, 32, 47],
+            [18, 9, 24, 39]
+          ]
+        }
+      }
+    }
+  },
+  "defaults": {
+    "dataSources": {
+      "ds.search": {
+        "options": {
+          "queryParameters": {
+            "latest": "$global_time.latest$",
+            "earliest": "$global_time.earliest$"
+          }
+        }
+      }
+    }
+  },
+  "inputs": {},
+  "layout": {
+    "type": "absolute",
+    "options": {
+      "height": 1600,
+      "width": 1575
+    },
+    "structure": [
+      {
+        "item": "viz_pfqlLWWn",
+        "type": "block",
+        "position": {
+          "x": 10,
+          "y": 10,
+          "w": 610,
+          "h": 660
+        }
+      },
+      {
+        "item": "viz_Scxyw2SQ",
+        "type": "block",
+        "position": {
+          "x": 20,
+          "y": 680,
+          "w": 590,
+          "h": 330
+        }
+      },
+      {
+        "item": "viz_OUKSyzmT",
+        "type": "block",
+        "position": {
+          "x": 640,
+          "y": 20,
+          "w": 270,
+          "h": 270
+        }
+      },
+      {
+        "item": "viz_7SAXsMlq",
+        "type": "block",
+        "position": {
+          "x": 920,
+          "y": 20,
+          "w": 350,
+          "h": 270
+        }
+      },
+      {
+        "item": "viz_h9C35sBw",
+        "type": "block",
+        "position": {
+          "x": 1290,
+          "y": 20,
+          "w": 270,
+          "h": 270
+        }
+      },
+      {
+        "item": "viz_D5V3kMVN",
+        "type": "block",
+        "position": {
+          "x": 640,
+          "y": 320,
+          "w": 860,
+          "h": 790
+        }
+      }
+    ],
+    "globalInputs": []
+  },
+  "description": "",
+  "title": "Radar"
+}

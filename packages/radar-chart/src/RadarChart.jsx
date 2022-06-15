@@ -1,45 +1,94 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Button from '@splunk/react-ui/Button';
-import { StyledContainer, StyledGreeting } from './RadarChartStyles';
+import React, { Component, useState, useEffect, useCallback } from 'react';
+import { Radar } from '@nivo/radar';
+import SplunkVisualization from '@splunk/visualizations/common/SplunkVisualization';
 
-class RadarChart extends Component {
-    static propTypes = {
-        name: PropTypes.string,
-    };
-
-    static defaultProps = {
-        name: 'User',
-    };
-
-    constructor(props) {
-        super(props);
-        this.state = { counter: 0 };
+// this funtion formats the data fromthe dataSource into a format required by the visualization API
+const formatData = (dataSources) => {
+    const dsData = dataSources.primary.data;
+    if (!dsData) {
+        return [];
     }
 
-    render() {
-        const { name } = this.props;
-        const { counter } = this.state;
+    const data = [];
+    const labels = dsData.fields.map((l) => l.name);
 
-        const message =
-            counter === 0
-                ? 'You should try clicking the button.'
-                : `You've clicked the button ${counter} time${counter > 1 ? 's' : ''}.`;
+    dsData.columns.forEach((column) => {});
+    const numColumns = dsData.columns[0]?.length;
 
-        return (
-            <StyledContainer>
-                <StyledGreeting>Hello, {name}!</StyledGreeting>
-                <div>{message}</div>
-                <Button
-                    label="Click here"
-                    appearance="primary"
-                    onClick={() => {
-                        this.setState({ counter: counter + 1 });
-                    }}
-                />
-            </StyledContainer>
-        );
-    }
-}
+    dsData.columns.forEach((column, labelIdx) => {
+        column.forEach((item, idx) => {
+            if (data.length < idx + 1) {
+                data.push({});
+            }
+            data[idx][labels[labelIdx]] = item;
+        });
+    });
 
-export default RadarChart;
+    return data;
+};
+
+// create the radar chart
+
+const CustomRadar = ({ dataSources }) => {
+    const radarData = formatData(dataSources); // format the dataSource from the definition into the proper expected form
+    // console.log(radarData);
+    return (
+        <>
+            <Radar
+                width={600}
+                height={700}
+                keys={['January', 'February']}
+                data={radarData}
+                indexBy="Item"
+                valueFormat=">-.2f"
+                margin={{ top: 70, right: 80, bottom: 40, left: 80 }}
+                curve="cardinalClosed"
+                borderColor={{ from: 'color' }}
+                gridLabelOffset={36}
+                dotSize={10}
+                dotColor="transparent"
+                dotBorderWidth={0}
+                colors={{ scheme: 'category10' }}
+                motionConfig="slow"
+                legends={[
+                    {
+                        anchor: 'top-left',
+                        direction: 'column',
+                        translateX: -50,
+                        translateY: -40,
+                        itemWidth: 80,
+                        itemHeight: 20,
+                        itemTextColor: '#999',
+                        symbolSize: 12,
+                        symbolShape: 'circle',
+                        effects: [
+                            {
+                                on: 'hover',
+                                style: {
+                                    itemTextColor: '#000',
+                                },
+                            },
+                        ],
+                    },
+                ]}
+            />
+        </>
+    );
+};
+
+CustomRadar.config = {
+    dataContract: {},
+    optionsSchema: {},
+    key: 'splunk.CustomRadar',
+    name: 'CustomRadar',
+};
+
+CustomRadar.propTypes = {
+    ...SplunkVisualization.propTypes,
+};
+
+CustomRadar.defaultProps = {
+    ...SplunkVisualization.defaultProps,
+};
+
+export default CustomRadar;
