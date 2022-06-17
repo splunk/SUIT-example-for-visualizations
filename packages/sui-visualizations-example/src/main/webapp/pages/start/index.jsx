@@ -34,7 +34,7 @@ layout(
                         src="/static/app/sui-visualizations-example/sankey.png"
                         title="Splunk Visualization (Sankey Diagram)"
                         subtitle="Without Dashboard Framework (ReactJS Only)"
-                        alt="Sankey Diagram Image"
+                        alt="4"
                         url="/app/sui-visualizations-example/splunkViz"
                     />
                 </div>
@@ -49,8 +49,8 @@ layout(
                 </div>
                 <div>
                     <VisualizationCard
-                        src="/static/app/sui-visualizations-example/treemap.png"
-                        title="3rd Party Visualization (Treemap Diagram)"
+                        src="/static/app/sui-visualizations-example/funnel.png"
+                        title="3rd Party Visualization (Funnel Chart)"
                         subtitle="Without Dashboard Framework (ReactJS Only)"
                         alt="Treemap Diagram Image"
                         url="/app/sui-visualizations-example/3PwithoutDF"
