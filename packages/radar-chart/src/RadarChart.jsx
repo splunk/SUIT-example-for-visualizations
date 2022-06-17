@@ -37,7 +37,7 @@ const CustomRadar = ({ dataSources }) => {
             <Radar
                 width={600}
                 height={700}
-                keys={['January', 'February']}
+                keys={['January', 'February', 'March']}
                 data={radarData}
                 indexBy="Item"
                 valueFormat=">-.2f"

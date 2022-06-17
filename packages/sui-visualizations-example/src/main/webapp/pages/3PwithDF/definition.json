@@ -79,7 +79,7 @@
     "radar_search": {
       "type": "ds.search",
       "options": {
-        "query": "| inputlookup radar.csv\n| table Item, January February",
+        "query": "| inputlookup radar.csv\n| table Item, January February March",
         "queryParameters": {
           "earliest": "0",
           "latest": ""
