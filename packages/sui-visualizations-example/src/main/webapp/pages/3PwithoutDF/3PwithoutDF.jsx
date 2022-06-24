@@ -16,7 +16,7 @@ const mySearchJob = SearchJob.create({
 });
 
 const params = {
-    output_mode: 'json',
+    count: 500,
 };
 
 const ThirdPartyExample = () => {

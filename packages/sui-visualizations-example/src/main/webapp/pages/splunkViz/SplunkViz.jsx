@@ -20,15 +20,16 @@ const themeToVariant = {
 };
 
 const SplunkVizExample = () => {
-    const [dataFields, setDataFields] = useState();
-    const [dataColumns, setDataColumns] = useState();
+    const [dataFields, setFields] = useState();
+    const [dataColumns, setColumns] = useState();
 
     useEffect(() => {
         const subscription = mySearchJob.getResults(params).subscribe((results) => {
-            setDataFields(results.fields); // update state variables
-            setDataColumns(results.columns);
+            setFields(results.fields); // update state variables
+            setColumns(results.columns);
         });
-        // clean up func
+
+        // clean up function
         return () => {
             subscription.unsubscribe();
         };
@@ -63,6 +64,7 @@ const SplunkVizExample = () => {
                                         fields: dataFields,
                                         columns: dataColumns,
                                     },
+                                    requestParams: { offset: 0, count: 10 },
                                 },
                             }}
                         />
