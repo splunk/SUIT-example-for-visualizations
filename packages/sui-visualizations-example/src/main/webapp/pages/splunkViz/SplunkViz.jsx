@@ -20,10 +20,11 @@ const themeToVariant = {
 };
 
 const SplunkVizExample = () => {
-    const [dataFields, setFields] = useState();
+    const [dataFields, setFields] = useState(); // we use two state variables to handle fields and columns, for easy working with Sankey API
     const [dataColumns, setColumns] = useState();
 
     useEffect(() => {
+        // fetch data after our first render with a useEffect hook
         const subscription = mySearchJob.getResults(params).subscribe((results) => {
             setFields(results.fields); // update state variables
             setColumns(results.columns);
@@ -61,7 +62,7 @@ const SplunkVizExample = () => {
                             dataSources={{
                                 primary: {
                                     data: {
-                                        fields: dataFields,
+                                        fields: dataFields, // separating fields and columns allows for easy use
                                         columns: dataColumns,
                                     },
                                     requestParams: { offset: 0, count: 10 },
@@ -86,7 +87,7 @@ const SplunkVizExample = () => {
                 <Markdown
                     options={{
                         markdown:
-                            '## Splunk Searches \nThe benefit of using a Splunk visulization within Splunk Web is that you can run a Splunk search directly in your app, without worrying about authentication or CORS configuration. This can be done with the `@splunk/search-job` package from the [Splunk UI Toolkit](https://splunkui.splunk.com/Packages/search-job/Overview). Simply put, this package provides you the `SearchJob` class that allows you to subscribe to search results and use them within your app. The package also allows you to create parameters according to the search endpoint API that allow you specify the results output. The example below shows how the SearchJob package was used to retrieve search results in `json_cols` form, which makes it easy for us to use the results in the Sankey diagram, without the need for further data manipulation. Note that these are just various parts, for the full code of this site visit (github link)',
+                            '## Splunk Searches \nThe benefit of using a Splunk visulization within Splunk Web is that you can run a Splunk search directly in your app, without worrying about authentication or CORS configuration. This can be done with the `@splunk/search-job` package from the [Splunk UI Toolkit](https://splunkui.splunk.com/Packages/search-job/Overview). Simply put, this package provides you the `SearchJob` class that allows you to subscribe to search results and use them within your app. The package also allows you to create parameters according to the search endpoint API that allow you specify the results output. The example below shows how the SearchJob package was used to retrieve search results in `json_cols` form, which makes it easy for us to use the results in the Sankey diagram, without the need for further data manipulation. Note that these are just various parts, for the full code of this site visit [GitHub](https://github.com/splunk/splunk-ui-data-viz-guidance/blob/main/packages/sui-visualizations-example/src/main/webapp/pages/splunkViz/SplunkViz.jsx)',
                     }}
                 />
                 <Markdown

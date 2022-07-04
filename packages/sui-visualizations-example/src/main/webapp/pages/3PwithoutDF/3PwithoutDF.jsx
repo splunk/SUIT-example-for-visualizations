@@ -10,20 +10,19 @@ const themeToVariant = {
 };
 
 const mySearchJob = SearchJob.create({
+    // create a search job that searches against our lookup
     search: '|inputlookup funnel.csv',
     earliest_time: '-60m@m',
     latest_time: 'now',
 });
 
-const params = {
-    count: 500,
-};
-
 const ThirdPartyExample = () => {
-    const [dataState, setDataState] = useState([]);
+    const [dataState, setDataState] = useState([]); // create our state variable to store our data, only need one for this example
 
     useEffect(() => {
-        const subscription = mySearchJob.getResults(params).subscribe((results) => {
+        // fetch data after our first render with a useEffect hook
+        const subscription = mySearchJob.getResults().subscribe((results) => {
+            // subscribe to our search results, since results.results is in the form we need, no need to do anything else
             setDataState(results.results);
         });
 

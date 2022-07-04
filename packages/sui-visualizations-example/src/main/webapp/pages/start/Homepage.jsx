@@ -34,7 +34,7 @@ const SplunkVizExample = () => {
                             title="Splunk Visualization (Sankey Diagram)"
                             subtitle="Without Dashboard Framework (ReactJS Only)"
                             alt="4"
-                            url="/app/sui-visualizations-example/splunkViz1"
+                            url="/app/sui-visualizations-example/splunkViz"
                         />
                     </div>
                     <div>
@@ -43,7 +43,7 @@ const SplunkVizExample = () => {
                             title="3rd Party Visualization (Radar Chart)"
                             subtitle="Within Splunk Dashboard Framework"
                             alt="Radar Chart Image"
-                            url="/app/sui-visualizations-example/3PwithDF1"
+                            url="/app/sui-visualizations-example/3PwithDF"
                         />
                     </div>
                     <div>
@@ -52,7 +52,7 @@ const SplunkVizExample = () => {
                             title="3rd Party Visualization (Funnel Chart)"
                             subtitle="Without Dashboard Framework (ReactJS Only)"
                             alt="Treemap Diagram Image"
-                            url="/app/sui-visualizations-example/3PwithoutDF1"
+                            url="/app/sui-visualizations-example/3PwithoutDF"
                         />
                     </div>
                 </div>
