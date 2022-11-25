@@ -3,6 +3,7 @@ import { Radar } from '@nivo/radar';
 import SplunkVisualization from '@splunk/visualizations/common/SplunkVisualization';
 
 // this funtion formats the data fromthe dataSource into a format required by the visualization API
+
 const formatData = (dataSources) => {
     const dsData = dataSources.primary.data;
     if (!dsData) {
@@ -27,18 +28,50 @@ const formatData = (dataSources) => {
     return data;
 };
 
+const staticData = [
+    {
+        Item: 'Hats',
+        January: 150,
+        February: 250,
+        March: 200,
+    },
+    {
+        Item: 'Outerwear',
+        January: 350,
+        February: 375,
+        March: 275,
+    },
+    {
+        Item: 'T-shirts',
+        January: 100,
+        February: 85,
+        March: 250,
+    },
+    {
+        Item: 'Accessories',
+        January: 124,
+        February: 233,
+        March: 150,
+    },
+    {
+        Item: 'Stickers',
+        January: 50,
+        February: 35,
+        March: 150,
+    },
+];
+
 // create the radar chart
 
 const CustomRadar = ({ dataSources }) => {
-    const radarData = formatData(dataSources); // format the dataSource from the definition into the proper expected form
-    // console.log(radarData);
+    // const radarData = formatData(dataSources); // format the dataSource from the definition into the proper expected form
     return (
         <>
             <Radar
                 width={600}
                 height={700}
                 keys={['January', 'February', 'March']}
-                data={radarData}
+                data={staticData}
                 indexBy="Item"
                 valueFormat=">-.2f"
                 margin={{ top: 70, right: 80, bottom: 40, left: 80 }}
