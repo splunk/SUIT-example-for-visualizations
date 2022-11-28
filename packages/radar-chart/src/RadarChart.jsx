@@ -5,7 +5,8 @@ import SplunkVisualization from '@splunk/visualizations/common/SplunkVisualizati
 // this funtion formats the data fromthe dataSource into a format required by the visualization API
 
 const formatData = (dataSources) => {
-    const dsData = dataSources.primary.data;
+    const dsData = dataSources?.primary?.data;
+    console.log(dsData);
     if (!dsData) {
         return [];
     }
@@ -64,14 +65,14 @@ const staticData = [
 // create the radar chart
 
 const CustomRadar = ({ dataSources }) => {
-    // const radarData = formatData(dataSources); // format the dataSource from the definition into the proper expected form
+    const radarData = formatData(dataSources); // format the dataSource from the definition into the proper expected form
     return (
         <>
             <Radar
                 width={600}
                 height={700}
                 keys={['January', 'February', 'March']}
-                data={staticData}
+                data={radarData}
                 indexBy="Item"
                 valueFormat=">-.2f"
                 margin={{ top: 70, right: 80, bottom: 40, left: 80 }}
